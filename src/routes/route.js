@@ -1,14 +1,14 @@
 const express = require('express');
+
+
 const router = express.Router();
-const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
+const newController=require('../controllers/newController')
 
-router.get("/test-me", function (req, res) {
-    res.send("My first ever api!")
-})
-
-router.post("/createUser", UserController.createUser  )
-
-router.get("/getUsersData", UserController.getUsersData)
+router.post('/createNewAuthor',newController.createNewAuthor)
+router.post('/createNewBook',newController.createNewBook)
+router.get('/allBooks',newController.allBooks)
+router.get('/updateBookPrice',newController.updateBookPrice)
+router.get('/authorName',newController.authorName)
 
 module.exports = router;
+// adding this comment for no reason
