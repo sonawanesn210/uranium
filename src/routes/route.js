@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/movies', function(req,res){
+/*router.get('/movies', function(req,res){
     let arr =["Rang de Basanti","The Shining","Incendies","Finding Nemo","Lord of the Rings"]
     console.log("Name of the movies")
     res.send(arr)
@@ -64,6 +64,53 @@ router.get('/films/:filmId', function(req,res){
     }
 });
 
+*/
+
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+ 
+   router.post('/players', function (req, res) {
+        const data =req.body
+    let pt =0
+    for(let i=0;i<players.length;i++){
+        if(players[i].name===data.name)
+        return res.send({msg:"Already exist in list",Players:players})
+    }
+    players.push(data)
+    res.send(players)
+      
+    
+       res.send(  { data: players , status: true }  )
+
+   })
 
 
 
