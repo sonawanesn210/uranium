@@ -1,6 +1,21 @@
 const express = require('express');
-
+const authorController=require("../controllers/refController")
+const publisherController= require("../controllers/refController");
+const bookController =require("../controllers/refController")
 const router = express.Router();
+
+
+
+
+
+router.post("/createAuthor",authorController.createAuthor)
+router.post("/createPublisher",publisherController.createPublisher)
+router.post("/createBook",bookController.createBook)
+router.get("/getBooksWithAuthorPublisher",bookController.getBooksWithAuthorPublisher)
+//router.put("books/:name",bookController.hardCover)
+router.put('/books', bookController.updateBooks)
+
+module.exports = router;
 
 
 /*router.get('/movies', function(req,res){
@@ -64,7 +79,7 @@ router.get('/films/:filmId', function(req,res){
     }
 });
 
-*/
+
 
 let players =
    [
@@ -112,8 +127,5 @@ let players =
 
    })
 
-
-
-
-
 module.exports = router;
+*/
