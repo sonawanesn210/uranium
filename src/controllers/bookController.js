@@ -51,10 +51,20 @@ const updateBooks = async function (req, res) {
         arrayOfPublishers.push(objId)
     }
     
-    let books = await bookModel.updateMany({publisher: {$in: arrayOfPublishers}},{isHardCover: true})
-
-    res.send({data: books})
+    //let books = await bookModel.updateMany({publisher: {$in: arrayOfPublishers}},{isHardCover: true})
+    let updatePublisher = await bookModel.updateMany({publisher: {$in: arrayOfPublishers}},{isHardCover: true})
+     let hardCoverAuthors=await authorModel.find({rating:{$gt:3.5}}).select({_id:1})
+     let arrayOfAuthor =[]
+     for(let i=0;i<hardCoverAuthors.length;i++){
+         let objId1=hardCoverAuthors[i]._id
+         arrayOfAuthor.push(objId1)
+     }
+     let updateAuthor=await bookModel.updateMany({author:{$in:arrayOfAuthor}},{$inc:{price:10}})
+    res.send({msg1: updatePublisher,msg2:updateAuthor})
 }
+
+   
+
 
 module.exports.createBook= createBook
 module.exports.fetchbooks = fetchbooks
