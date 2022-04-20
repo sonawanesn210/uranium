@@ -11,7 +11,7 @@ router.get("/middleware4",commonMW.middleware,UserController.API4)
 */
 
 router.get("/middleware1",UserController.API1)
-router.get("/middleware1",UserController.API2)
-router.get("/middleware1",UserController.API3)
-router.get("/middleware1",UserController.API4)
+router.get("/middleware2",UserController.API2)
+router.get("/middleware3",UserController.API3)
+router.get("/middleware4",UserController.API4)
 module.exports = router;
