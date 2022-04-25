@@ -77,9 +77,28 @@ let getOtp = async function (req, res) {
         res.status(500).send({ msg: err.message })
     }
 }
-
+let getByDistrict=async function(req,res){
+      try {
+        let districtid=req.query.district_id
+    let date=req.query.date
+    console.log(`query params are:${districtid} ${date}`)
+    let option={
+        method:"get",
+        url:`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${districtid}&date=${date} `
+    }
+    let result=await axios(option)
+    let data=result.data
+    console.log(data)
+    res.send({msg:data})
+}
+catch (err) {
+    console.log(err)
+    res.status(500).send({ msg: err.message })
+}
+}
 
 module.exports.getStates = getStates
 module.exports.getDistricts = getDistricts
 module.exports.getByPin = getByPin
 module.exports.getOtp = getOtp
+module.exports.getByDistrict=getByDistrict
