@@ -16,5 +16,5 @@ router.post("/users/:userId/posts",mid.authenticate,mid.authorise, userControlle
 
 router.put("/users/:userId", userController.updateUser)
 //router.delete('/users/:userId', userController.deleteUser)
-
+router.delete("/users/:userId",mid.authenticate,mid.authorise, userController.deleteUser)
 module.exports = router;
